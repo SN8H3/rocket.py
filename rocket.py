@@ -64,10 +64,16 @@ def file(file):
 
     print("\n" * 2)
 
-    with open(file, 'r') as f:     #open file in input
+    try:
 
-        content = f.read()
-        print(content)
+    	with open(file, 'r') as f:     #open file in input
+
+        	content = f.read()
+        	print(content)
+
+    except IOError as error:
+    	print(color.red + str(error) + color.reset)
+
 
     print(color.blue + "\n [*] " + file + " scan completed!" + color.reset)
 
@@ -281,6 +287,9 @@ file('/etc/passwd')         #change parametrer, this p
 
 #/etc/crontab
 file('/etc/crontab')       
+
+#/var/www/wp-config
+file('/var/www/wp-config')
 
 #controll if some fiel is writable
 controll('/etc/hosts')         #change parametrer, this parametrer is default
